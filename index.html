@@ -1,26 +1,59 @@
 ---
-title: Le Coworking
+title: L'Atelier
 layout: default
 ---
 
-{% include video.html %}
-
-{% include icons.html icons=site.data.features display="grid" %}
+<section class="normal">
+  <div class="home">
+    <h1 id="title">L'Atelier des Médias, le <em>coworking</em> associatif</h1>
+    <picture id="helene">
+      <img src="/assets/helene.jpg" />
+    </picture>
+    <a id="joinus" class="button" href="/nous-rejoindre">Rejoignez-nous !</a>
+    <picture id="balcon">
+      <img src="/assets/balcon.jpg" />
+    </picture>
+    <figure id="quote">
+      <blockquote>Les collègues sont beaux et sentent bons, le café est gratuit.</blockquote>
+      <hr />
+      <figcaption>Mathieu Martinière</figcaption>
+    </figure>
+  </div>
+</section>
+<ul class="facts">
+  {% for fact in site.data.facts %}
+    <li>
+      <div>{{ fact.line1 }}</div>
+      <div>{{ fact.line2 }}</div>
+    </li>
+  {% endfor %}
+</ul>
 
 <section class="normal">
-  <h2>Travailler à l'Atelier</h2>
+  <h2>Un espace collaboratif et associatif</h2>
 
   <div>
-    <p>Créé en 2008, l'<em>Atelier des Médias</em> est le 1er espace de coworking lyonnais.</p>
-    <p>C'est une association qui regroupe des professionnels des médias (journalisme, web, graphisme, traduction,
-    vidéo/photo, etc.), un vivier de compétences qui collabore et invente de nouveaux modes de travail dans ce lieu de
-    212m² en centre ville.</p>
-    <p>Échanges, esprit d'ouverture et d'innovation, évènements, ambitions partagées, mise en commun d'outils et de
-    compétences, nouvelles solidarités professionnelles se développent à l'<em>Atelier des Médias</em>.</p>
-    <p>Plus de 30 postes de travail sont disponibles dans cet espace partagé.</p>
-    <p>Assidus ou volages, les coworkeurs fréquentent les lieux en toute libertés et dans le respect des autres.</p>
-    <p>Chacun donne un peu de son temps pour la gestion du lieu et s'investit dans un groupe (trésorerie, communication,
-    évènements, informatique, recrutement, coopération, vie associative, vie quotidienne). Et ça fonctionne très bien
-    !</p>
+    <p>L'Atelier des Médias est un projet collectif et innovant de coworking à Lyon, un espace partagé de travail,
+    imaginé par et pour les professionnels indpéendants des médias, du web et de l'image.
+    Ce lieu porte une volonté d'<em>ouverture et d'innovation</em>, des ambitions partagées,
+    une dimension sociétale, un esprit collaboratif pour que les indépendants développent ensemble de nouvelles
+    <em>solidarités professionnelles</em>.
+    </p>
+
+    <p>Se réunir au sein du coworking permet de tisser de nouveaux liens,
+    de ofrger des relations d'estime mutuelle, de confiance, et de susciter
+    une dynamique professionnelle. </p>
+  </div>
+  <a class="button">Découvrir l'asso</a>
+  <img src="/assets/coworkers-02.png" />
+  </div>
+  <div class="features">
+    {% for feature in site.data.features %}
+      <figure>
+        <img src="{{ feature.icon | prepend: '/assets/icons/' | append: '.svg' | relative_url }}"
+             alt="{{ feature.text }}" />
+        <figcaption>{{ feature.text }}</figcaption>
+      </figure>
+    {% endfor %}
   </div>
 </section>
