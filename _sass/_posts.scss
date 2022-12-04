@@ -1,6 +1,5 @@
 .post {
-  max-width: 900px;
-  margin: 2rem auto;
+  padding: 2rem;
 
   .featured {
     width: 100%;
@@ -11,8 +10,6 @@
   }
 
   .post-content {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
     img {
       display: block;
       max-width: 100%;

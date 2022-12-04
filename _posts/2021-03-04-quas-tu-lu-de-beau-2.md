@@ -15,7 +15,7 @@ tags:
     - livre
 ---
 
-**Comme tous les Français sous couvre-feu, on a fini les séries** ***Le Jeu de la Dame*** **ou** ***En Thérapie*****. Alors on s’est remis à la lecture. Découvrez les coups de cœur de nos coworkers, présentés lors du book club virtuel** ***Qu’as-tu lu de beau ?*****, de février.**
+**Comme tous les Français sous couvre-feu, on a fini les séries _Le Jeu de la Dame_ ou _En Thérapie_. Alors on s’est remis à la lecture. Découvrez les coups de cœur de nos coworkers, présentés lors du book club virtuel _Qu’as-tu lu de beau ?_, de février.**
 
 Dès qu’elle peut, le soir ou le week-end, Laura se plonge dans les bouquins. Dernièrement, cette jeune traductrice a dévoré *[Un mariage américain](https://www.lesechos.fr/weekend/livres-expositions/un-mariage-americain-feu-sur-lamour-1212668)*, de Tayari Jones. Un couple marié se retrouve accusé d’un crime. Comment vont-ils arriver à surmonter ce drame? Pour notre coworkeuse Laura, ce roman offre *« un regard réaliste et véridique du racisme quotidien aux Etats-Unis »*. L’auteure a d’ailleurs été primée par le Women’s Prize for Fiction en 2019. Son livre a même été encensé par l’ancien président américain Barack Obama.
 
