@@ -4,7 +4,10 @@
   text-transform: uppercase;
   gap: 1em;
   display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template:
+    // "helene helene title title joinus"
+    // "empty balcon balcon quote quote";
     "title"
     "helene"
     "balcon"
@@ -15,6 +18,8 @@
   #helene {
     width: 80%;
 
+    // grid-area: helene;
+    // margin: 0 0 -150px 0;
     img {
       width: 100%;
     }
@@ -40,6 +45,8 @@
   }
 
   #title {
+    // grid-area: title;
+    // margin: 2rem -1rem 0 2em;
     margin: 1rem;
     font-size: 30px;
 
@@ -50,6 +57,7 @@
   }
 
   #balcon {
+    // grid-area: balcon;
     width: 100%;
 
     img {
@@ -58,6 +66,8 @@
   }
 
   #quote {
+    // grid-area: quote;
+
     blockquote {
       @include blue-background-mixin;
       font-size: 18px;
@@ -81,6 +91,10 @@
     figcaption {
       font-size: 14px;
     }
+  }
+
+  a#joinus {
+    // grid-area: joinus;
   }
 }
 
