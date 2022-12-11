@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: /atelierdesmedias.github.io/sitemap.xml
