@@ -3,7 +3,6 @@ description: "Le 1er espace de coworking Lyonnais associatif"
 meta_robots: noindex
 lang: fr
 locale: fr_FR
-baseurl: '/atelierdesmedias.github.io'
 
 liquid:
   error_mode: strict
