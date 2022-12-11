@@ -2,7 +2,7 @@ title: "L'Atelier des Médias"
 description: "Le 1er espace de coworking Lyonnais associatif"
 lang: fr
 locale: fr_FR
-baseurl: '/'
+baseurl: '/atelierdesmedias.github.io'
 
 liquid:
   error_mode: strict
