@@ -12,11 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-      - run: npm install
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
@@ -33,10 +28,7 @@ jobs:
           FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
           FACEBOOK_TOKEN: ${{ secrets.FACEBOOK_TOKEN }}
         run: bundle exec ruby events.rb
-      - name: Jekyll build
-        env:
-          JEKYLL_ENV: production
-        run: bundle exec jekyll build
+      - run: bundle exec jekyll build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
