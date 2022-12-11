@@ -1,20 +1,19 @@
 title: "L'Atelier des Médias"
 description: "Le 1er espace de coworking Lyonnais associatif"
-meta_robots: noindex
 lang: fr
 locale: fr_FR
+baseurl: '/atelierdesmedias.github.io'
 
 liquid:
   error_mode: strict
   strict_filters: true
-
-show_social_icons: true
 
 twitter:
   username: coworkinglyon
 
 facebook:
   page: Coworkinglyon
+  app_id: 106737945179435
 
 instagram:
   username: "atelierdesmedias_lyon"
@@ -28,9 +27,10 @@ exclude:
 
 plugins:
   - jekyll-feed
+  - jekyll-paginate-v2
+  - jekyll-postcss-v2
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-tidy
 
 collections:
   formulas:
@@ -39,3 +39,21 @@ collections:
     output: true
   events:
     output: true
+  posts:
+    output: true
+    permalink: /:title/
+
+pagination:
+  enabled: true
+  per_page: 8
+  permalink: '/:num/'
+  title: ':title'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+  trail:
+    before: 2
+    after: 2
+
+postcss:
+  cache: false

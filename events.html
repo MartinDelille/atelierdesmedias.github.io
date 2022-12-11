@@ -1,19 +1,21 @@
 ---
-title: Agenda
+title: Les Evènements
 layout: default
-permalink: agenda
+permalink: les-evenements
 ---
 
 <h2>Les évènements</h2>
 
-{% for event in site.events %}
+{% assign reversed_events = site.events | reverse %}
+
+{% for event in reversed_events %}
   <section class=event>
     <div class="picture">
-      <img src="{{ event.id | append: '.jpg' | relative_url }}" alt="{{ event.name }}" />
+      <img src="/events/{{ event.cover }}" alt="{{ event.name | escape }}" />
     </div>
     <div class="details">
-      <span class="date">{{ event.event_time | date: "%d/%m/%Y"}}</span>
-      <span class="time">{{ event.event_time | date: "> %Hh%M"}}</span>
+      <span class="date">{{ event.date | date: "%d/%m/%Y"}}</span>
+      <span class="time">{{ event.date | date: "> %Hh%M"}}</span>
       <a href="https://www.facebook.com/events/{{ event.event_id}}" target="_blank">
         <h3>{{ event.name }}</h3>
         <div class="place">
@@ -29,7 +31,7 @@ permalink: agenda
   </section>
 {% endfor %}
 
-<section class="organize rice-crispies">
+<section class="organize">
   <h2>Vous souhaitez organiser un évènement à l'Atelier ?</h2>
   <p>Vous êtes les bienvenus !</p>
   <p>Votre évènement doit être gratuit et ouvert à tous et à visée non commerciale.</p>
@@ -41,7 +43,7 @@ permalink: agenda
 <section class="contact">
   <form action="https://formspree.io/f/mrgjznyn" method="POST">
     <label id="decription-label" for="description-textarea">
-      <h4>Décriver votre évènement</h4>
+      <h4>Décrivez votre évènement</h4>
       <small>(en 500 signes), ce paragraphe sera utilisé pour promouvoir votre évènement</small>
     </label>
     <textarea name="Description" id="description-textarea"></textarea>

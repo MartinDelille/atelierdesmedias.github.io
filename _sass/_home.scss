@@ -1,6 +1,6 @@
 .big-video {
   position: relative;
-  height: 100vh;
+  height: 75vh;
   overflow: hidden;
 
   video {
@@ -9,54 +9,17 @@
     object-fit: cover;
   }
 
-  img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-  }
-
-  @media screen and (min-width: 800px) {
-    height: calc(100vh - 80px);
-  }
-}
-
-.normal {
-  max-width: 960px;
-  padding: 2em;
-
-  @media screen and (min-width: 800px) {
-    display: flex;
-    padding: 4em 0;
-
-    h2 {
-      align-self: center;
-
-      min-width: 10ch;
-      padding: 0 1em;
-
-      text-align: right;
-    }
-  }
-}
-
-.interest {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  p {
-    max-width: 70ch;
-    text-align: center;
-  }
-
   a {
-    margin: 2rem;
-    padding: 2rem;
+    position: absolute;
+    right: 30%;
+    bottom: 30%;
 
-    border: solid 1px #84cbd5;
+    border-color: white;
 
-    font-size: 1.7rem;
+    color: white;
+  }
+
+  @media screen and (min-width: 800px) {
+    height: calc(75vh - 80px);
   }
 }

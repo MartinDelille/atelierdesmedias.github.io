@@ -1,71 +1,38 @@
 # frozen_string_literal: true
 
-require 'time'
-require 'json'
-require 'net/http'
-require 'open-uri'
+require 'koala'
+require 'mini_magick'
 require 'stringex'
-require 'uri'
+require 'time'
+require 'yaml'
 
-url = ENV['FACEBOOK_GRAPH_URL']
-if url.nil?
-  puts 'Please set FACEBOOK_GRAPH_URL'
-  exit(-1)
-end
-page_id = ENV['FACEBOOK_PAGE_ID']
-if page_id.nil?
-  puts 'Please set FACEBOOK_PAGE_ID'
-  exit(-1)
-end
-token = ENV['FACEBOOK_TOKEN']
-if token.nil?
-  puts 'Please set FACEBOOK_TOKEN'
-  exit(-1)
-end
+require './env_utils'
 
-uri = URI(url + page_id)
-uri.query = URI.encode_www_form({
-                                  fields: 'events',
-                                  access_token: token
-                                })
-res = Net::HTTP.get_response(uri)
-if res.is_a?(Net::HTTPSuccess)
-  Dir['_events/*.*'].each do |f|
-    puts "Deleting #{f}..."
-    File.delete(f)
+access_token = get_env_or_exit('FACEBOOK_TOKEN')
+page_id = get_env_or_exit('FACEBOOK_PAGE_ID')
+
+graph = Koala::Facebook::API.new(access_token)
+fb_events = graph.get_connections(page_id, 'events', fields: %w[id name start_time place description cover])
+fb_events.each do |fb_event|
+  next unless fb_event['name'] && fb_event['cover']
+
+  puts '---'
+  pp fb_event
+  event_time = Time.parse(fb_event['start_time'])
+  slug = "#{event_time.strftime('%F')}-#{fb_event['name'].to_url}"
+  event = { 'name' => fb_event['name'],
+            'date' => event_time,
+            'event_id' => fb_event['id'],
+            'cover' => "#{slug}.jpg" }
+  event['place'] = (fb_event['place']['name']).to_s if fb_event['place']
+  File.open("_events/#{slug}.md", 'w') do |f|
+    f.write("#{event.to_yaml}---\n")
+    description = fb_event['description'].gsub(/\r/, '')
+    f.write("\n#{description}\n") unless description.nil? || description.empty?
   end
-  events = JSON.parse(res.body)['events']['data']
-  events.each do |event|
-    puts '---', event
-    slug = event['name'].to_url
-    File.open("_events/#{slug}.md", 'w') do |f|
-      f.write("---\n")
-      f.write("name: \"#{event['name']}\"\n")
-      f.write("event_time: \"#{Time.parse(event['start_time'])}\"\n")
-      f.write("place: \"#{event['place']['name']}\"\n")
-      f.write("event_id: #{event['id']}\n")
-      f.write("---\n\n")
-      description = event['description']
-      f.write("\n#{description}\n") unless description.nil? || description.empty?
-    end
 
-    # Fetch event cover
-    uri = URI(url + event['id'])
-    uri.query = URI.encode_www_form({
-                                      fields: 'cover',
-                                      access_token: token
-                                    })
-    res = Net::HTTP.get_response(uri)
-    next unless res.is_a?(Net::HTTPSuccess)
-
-    cover_source = JSON.parse(res.body)['cover']['source']
-    URI.parse(cover_source).open do |image|
-      File.open("_events/#{slug}.jpg", 'wb') do |file|
-        file.write(image.read)
-      end
-    end
-  end
-else
-  puts "Bad response: #{res}"
-  exit(-1)
+  # Fetch event cover
+  image = MiniMagick::Image.open(fb_event['cover']['source'])
+  image.resize("x300\>")
+  image.write("_events/#{slug}.jpg")
 end
